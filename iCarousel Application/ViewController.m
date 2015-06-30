@@ -14,7 +14,7 @@
     NSInteger lastIndexpath;
 }
 
-@property (strong, nonatomic) IBOutlet iCarousel *carousel;
+
 @end
 
 @implementation ViewController
@@ -41,9 +41,7 @@
                          @"Giraffes Eat: Trees",
                          @"Chimps Eat: Bananas",
                          nil];
-    
-
-    [_carousel reloadInputViews];
+    [_carousel reloadData];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -67,12 +65,27 @@
     //limit the number of items views loaded concurrently (for performance reasons)
     return 7;
 }
-- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index
+
+
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
-    //create a numbered view
-    UIView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[_animals objectAtIndex:index]]];
-    return view;
+    
+    UIButton *button = (UIButton *)view;
+    if (button == nil)
+    {
+        //no button available to recycle, so create new one
+        UIImage *image =  [UIImage imageNamed:[_animals objectAtIndex:index]];
+        button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(0.0f, 0.0f, 320, image.size.height);
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [button setBackgroundImage:image forState:UIControlStateNormal];
+        button.titleLabel.font = [button.titleLabel.font fontWithSize:50];
+        [button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    }
+  
+    return button;
 }
+
 - (NSInteger)numberOfPlaceholdersInCarousel:(iCarousel *)carousel
 {
     //note: placeholder views are only displayed on some carousels if wrapping is disabled
@@ -90,20 +103,19 @@
     //wrap all carousels
     return self.wrap;
 }
-- (void)carouselDidEndScrollingAnimation:(iCarousel *)aCarousel
-{
-//    lastIndexpath = aCarousel.currentItemIndex;
-//    [self performSegueWithIdentifier:@"pushToSecondViewController" sender:self];
-    
-    
-//    [label setText:[NSString stringWithFormat:@"%@", [descriptions objectAtIndex:aCarousel.currentItemIndex]]];
-}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if ([[segue identifier] isEqualToString:@"pushToSecondViewController"]) {
-//    secondViewController *viewcontrollerInstance = (secondViewController *)[segue destinationViewController];
-//    viewcontrollerInstance.textfromFistView =[self.descriptions objectAtIndex:lastIndexpath];
-//    }
+    if ([[segue identifier] isEqualToString:@"pushToSecondViewController"]) {
+    UINavigationController *navcon = [segue destinationViewController];
+        secondViewController *instance =[navcon.viewControllers objectAtIndex:0];
+    instance.data =[self.descriptions objectAtIndex:lastIndexpath];
+    }
 }
-
+- (void)buttonTapped:(UIButton *)sender
+{
+    //get item index for button
+    NSInteger index = [self.carousel indexOfItemViewOrSubview:sender];
+    lastIndexpath = index;
+    
+   [self performSegueWithIdentifier:@"pushToSecondViewController" sender:self];}
 @end

@@ -28,7 +28,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="Chv-RF-P4l" kind="show" identifier="pushToSecondViewController" id="rGf-2i-wVp"/>
+                        <outlet property="carousel" destination="JaQ-SP-gaf" id="SEZ-XT-9J0"/>
+                        <segue destination="bo9-ct-CSy" kind="showDetail" identifier="pushToSecondViewController" id="rGf-2i-wVp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -47,25 +48,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2EV-bP-eev">
-                                <rect key="frame" x="152" y="199" width="318" height="106"/>
+                                <rect key="frame" x="7" y="203" width="318" height="106"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="19"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Successfully navigated" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQR-PH-TIS">
-                                <rect key="frame" x="152" y="96" width="250" height="21"/>
+                                <rect key="frame" x="28" y="92" width="250" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="kpa-JF-oR4">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="US5-6x-CgY"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="textfromFistView" destination="2EV-bP-eev" id="bZ4-WW-J0V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcj-fI-p2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1731" y="404"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="FJN-uf-1IM">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2NC-3u-SZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bo9-ct-CSy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="TsX-qD-a8Y">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="0Gc-7g-Eyd"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gIT-g1-OGJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Chv-RF-P4l" kind="relationship" relationship="rootViewController" id="hVG-v7-Fv8"/>
+                    </connections>
+                </navigationController>
             </objects>
             <point key="canvasLocation" x="919" y="404"/>
         </scene>

@@ -16,6 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _textfromFistView.text= self.data;
+    UIBarButtonItem *back = self.navigationItem.leftBarButtonItem;
+    [back setAction:@selector(goBack)];
+    [back setTarget:self];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -23,7 +28,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)goBack {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
 /*
 #pragma mark - Navigation
 

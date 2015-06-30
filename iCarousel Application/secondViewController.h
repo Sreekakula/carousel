@@ -10,5 +10,5 @@
 
 @interface secondViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *textfromFistView;
-
+@property (weak, nonatomic) NSString *data;
 @end
