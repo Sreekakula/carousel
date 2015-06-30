@@ -13,5 +13,6 @@
 @property (strong, nonatomic) NSMutableArray *animals;
 @property (strong, nonatomic) NSMutableArray *descriptions;
 @property (nonatomic) BOOL wrap;
+
 @end
 
